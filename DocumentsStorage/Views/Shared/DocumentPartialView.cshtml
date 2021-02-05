@@ -1,0 +1,12 @@
+﻿@model DocumentsStorage.Models.Document
+
+<tr class="row">
+    <td>@Model.Name</td>
+    <td>@Model.Date.ToShortDateString()</td>
+    <td>@Model.Author</td>
+    <td>@Model.Type.ToString()</td>
+    <td class="link">
+        @Html.ActionLink("Скачать", "Download", "Download", new { path = Model.FullName }, new { })
+        <a href='@Url.Action("Download", "Download", new { path = Model.FullName })'><img src="~/Content/Icons/download.png" width="20" height="20"/></a>
+    </td>
+</tr>

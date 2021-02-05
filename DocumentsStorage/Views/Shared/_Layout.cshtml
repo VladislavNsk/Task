@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/Css/Site.css"/>
+</head>
+<body>
+    <nav class="nav ">
+        <ul class="menu ">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li id="sigout">@Html.ActionLink("Выйти", "Logout", "Account")</li>
+                <li>@Html.ActionLink("Создать документ", "Create", "Home")</li>
+                <li>@Html.ActionLink("Мои документы", "Documents", "Home")</li>
+            }
+
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <li>@Html.ActionLink("Войти", "Login", "Account")</li>
+                <li>@Html.ActionLink("Регистрация", "Register", "Account")</li>
+            }
+        </ul>
+    </nav>
+    @RenderBody()
+</body>
+</html>

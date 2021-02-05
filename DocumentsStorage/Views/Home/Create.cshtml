@@ -1,0 +1,63 @@
+﻿@model DocumentsStorage.Models.Document
+
+@{
+    ViewBag.Title = "Создать документ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset class="clearfix">
+        <legend>Документ</legend>
+        <div class="wrap_header">
+            <div>
+                @Html.LabelFor(model => model.Name)
+            </div>
+            <div>
+                @Html.TextBoxFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Author)
+            </div>
+            <div>
+                @Html.TextBoxFor(model => model.Author, new { Value = User.Identity.Name, @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Author)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Date)
+            </div>
+            <div>
+                @Html.TextBoxFor(model => model.Date, new { type = "date", @Value = DateTime.Now.Date.ToString("yyyy-MM-dd")@*, @readonly = "readonly"*@ })
+                @Html.ValidationMessageFor(model => model.Date)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Type)
+            </div>
+            <div>
+                <label>
+                    @Html.RadioButtonFor(model => model.Type, DocumentsStorage.Models.DocumentType.Внутренний, new { @checked = true }) Внутренний
+                </label>
+                <label>
+                    @Html.RadioButtonFor(model => model.Type, DocumentsStorage.Models.DocumentType.Внешний) Внешний
+                </label>
+            </div>
+        </div>
+        <div id="drop">
+            <div class="wrap">
+                <label>
+                    <input id="file" type="file" name="file" /><span id="fake_btn">Выбирите файл</span> или перетащите
+                </label>
+
+            </div>
+        </div>
+        <input id="button" type="submit" value="Создать" />
+
+    </fieldset>
+}
+
+<link href="~/Content/Css/CreateDocument.css" rel="stylesheet" />
+<script src="~/Scripts/DragAndDrop.js"></script>

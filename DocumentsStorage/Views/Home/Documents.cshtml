@@ -1,0 +1,45 @@
+﻿@using DocumentsStorage.Models;
+@model List<Document>
+
+@{
+    ViewBag.Title = "Документы";
+}
+
+<div class="container">
+    <div class="input_container">
+        <input id="search-text" type="text" placeholder="Имя документа">
+    </div>
+
+    <table id="info-table">
+        <thead>
+            <tr>
+                <th data-type="text">Название</th>
+                <th data-type="date">Дата</th>
+                <th data-type="text">Автор</th>
+                <th data-type="text">Тип документа</th>
+                <th>Файл</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count == 0)
+            {
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    @Html.Partial("DocumentPartialView", item)
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<script src="~/Scripts/Search.js"></script>
+<link rel="stylesheet" href="~/Content/Css/MyDocuments.css" />

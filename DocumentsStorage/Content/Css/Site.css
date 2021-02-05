@@ -1,0 +1,69 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body, input {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #7ba7ab;
+}
+
+.menu {
+    margin: 0;
+    padding: 0;
+}
+
+    .menu li {
+        display: inline-block;
+        list-style-type: none;
+        font-size: 25px;
+        margin: 5px;
+    }
+
+        .menu li a {
+            padding: 5px;
+            position: relative;
+            line-height: 2em;
+            vertical-align: middle;
+            text-align: center;
+            text-decoration: none;
+            color: #2c2c2c;
+            outline: none;
+            border-radius: 5px;
+            box-shadow: 0 0 0 2px #ddd inset, 0 1px 5px black;
+        }
+
+            .menu li a:hover {
+                background: #eaebec linear-gradient(#fff, #dcdcdc);
+                box-shadow: 0 0 0 1px #aaa inset, 0 1px 1px #aaa;
+                color: #bd5a35;
+            }
+
+            .menu li a:active {
+                background: none;
+                box-shadow: 0 0 0 1px #F9F0DA inset, 0 1px 3px #000 inset, 0 1px 2px #fff;
+            }
+
+#sigout {
+    float: right;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+}
+
+.field-validation-error {
+    color: #f00;
+}
