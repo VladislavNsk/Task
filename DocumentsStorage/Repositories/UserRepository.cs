@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 using DocumentsStorage.Models;
 
@@ -22,9 +21,12 @@ namespace DocumentsStorage.Repositories
 
             using (var context = new UserContext())
             {
-                var searchedUser = context.Users.FirstOrDefault(u => string.Compare(u.Login, user.Login, false) == 0 && u.Pass == user.Pass);
+                var searchedUser = context.Users
+                    .Where(u => u.Login == user.Login && u.Pass == user.Pass)
+                    .AsEnumerable()
+                    .FirstOrDefault(u => u.Login == user.Login && u.Pass == user.Pass);
 
-                if (searchedUser != null && searchedUser.Login == user.Login)
+                if (searchedUser != null)
                 {
                     hasUser = true;
                 }
@@ -39,7 +41,10 @@ namespace DocumentsStorage.Repositories
 
             using (var context = new UserContext())
             {
-                var searchedUser = context.Users.FirstOrDefault(u => u.Login == userName);
+                var searchedUser = context.Users
+                    .Where(u => u.Login == userName)
+                    .AsEnumerable()
+                    .FirstOrDefault(u => u.Login == userName);
 
                 if (searchedUser != null)
                 {

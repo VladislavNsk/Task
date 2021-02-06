@@ -21,7 +21,11 @@ namespace DocumentsStorage.Repositories
                     fileStream.Read(document.DocumentBytes, 0, (int)fileStream.Length);
                 }
 
-                document.UserId = context.Users.FirstOrDefault(u => u.Login == document.Author).Id;
+                document.UserId = context.Users
+                    .Where(u => u.Login == document.Author)
+                    .AsEnumerable()
+                    .FirstOrDefault(u => u.Login == document.Author).Id;
+
                 document.FullName = path;
                 object[] parameters =
                 {
@@ -45,7 +49,11 @@ namespace DocumentsStorage.Repositories
 
             using (var context = new UserContext())
             {
-                list = context.Documents.Where(d => d.Author == userName || d.Type == DocumentType.Внешний).ToList();
+                list = context.Documents
+                    .Where(d => d.Author == userName || d.Type == DocumentType.Внешний)
+                    .AsEnumerable()
+                    .Where(d => d.Author == userName || d.Type == DocumentType.Внешний)
+                    .ToList();
             }
 
             return list;
