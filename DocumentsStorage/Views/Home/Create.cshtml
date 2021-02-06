@@ -31,7 +31,7 @@
                 @Html.LabelFor(model => model.Date)
             </div>
             <div>
-                @Html.TextBoxFor(model => model.Date, new { type = "date", @Value = DateTime.Now.Date.ToString("yyyy-MM-dd")@*, @readonly = "readonly"*@ })
+                @Html.TextBoxFor(model => model.Date, new { type = "date", @Value = DateTime.Now.Date.ToString("yyyy-MM-dd"), @readonly = "readonly" })
                 @Html.ValidationMessageFor(model => model.Date)
             </div>
             <div>

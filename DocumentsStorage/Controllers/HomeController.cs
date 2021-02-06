@@ -37,7 +37,7 @@ namespace DocumentsStorage.Controllers
                 return View();
             }
 
-            if (Request.Files.Count == 0 || Request.Files["file"] == null)
+            if (Request.Files.Count == 0 || Request.Files["file"] == null || Request.Files["file"].ContentLength == 0)
             {
                 ModelState.AddModelError("", "Выбирите файл");
                 return View();

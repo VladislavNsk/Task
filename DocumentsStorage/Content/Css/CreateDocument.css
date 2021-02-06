@@ -58,12 +58,6 @@
     border-color: #bd5a35;
 }
 
-.hidden {
-    display: inline-block;
-    margin-right: 10px;
-    margin-top: 5px;
-}
-
 #button {
     display: block;
     margin: 15px auto 0;
@@ -119,4 +113,9 @@
 
 fieldset {
     margin: 0 10px;
+}
+
+.validation-summary-errors li{
+    color: red;
+    list-style-type: none;
 }
